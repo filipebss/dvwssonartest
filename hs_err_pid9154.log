@@ -1,0 +1,600 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 86978560 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2627), pid=9154, tid=0x00007f37dc531700
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_121-b13) (build 1.8.0_121-b13)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.121-b13 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f37d806e800):  VMThread [stack: 0x00007f37dc431000,0x00007f37dc532000] [id=9164]
+
+Stack: [0x00007f37dc431000,0x00007f37dc532000],  sp=0x00007f37dc530310,  free space=1020k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xac703a]  VMError::report_and_die()+0x2ba
+V  [libjvm.so+0x4fc7eb]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8b
+V  [libjvm.so+0x923c43]  os::Linux::commit_memory_impl(char*, unsigned long, bool)+0x103
+V  [libjvm.so+0x924199]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0x29
+V  [libjvm.so+0x91e4aa]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2a
+V  [libjvm.so+0xac2d99]  VirtualSpace::expand_by(unsigned long, bool)+0x199
+V  [libjvm.so+0x5f9b75]  OneContigSpaceCardGeneration::grow_by(unsigned long)+0x25
+V  [libjvm.so+0x5f9f3f]  CardGeneration::expand(unsigned long, unsigned long)+0x6f
+V  [libjvm.so+0x5f9fee]  OneContigSpaceCardGeneration::expand(unsigned long, unsigned long)+0x3e
+V  [libjvm.so+0x5eb2a4]  GenCollectedHeap::do_collection(bool, bool, unsigned long, bool, int)+0x734
+V  [libjvm.so+0x487804]  GenCollectorPolicy::satisfy_failed_allocation(unsigned long, bool)+0x134
+V  [libjvm.so+0xac8044]  VM_GenCollectForAllocation::doit()+0x94
+V  [libjvm.so+0xad0535]  VM_Operation::evaluate()+0x55
+V  [libjvm.so+0xace90a]  VMThread::evaluate_operation(VM_Operation*)+0xba
+V  [libjvm.so+0xacec8e]  VMThread::loop()+0x1ce
+V  [libjvm.so+0xacf100]  VMThread::run()+0x70
+V  [libjvm.so+0x926268]  java_start(Thread*)+0x108
+
+VM_Operation (0x00007f37e0496d20): GenCollectForAllocation, mode: safepoint, requested by thread 0x00007f37d800a000
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f37d8d02000 JavaThread "Report about progress of PHP analyzer" daemon [_thread_blocked, id=9188, stack(0x00007f37a69df000,0x00007f37a6ae0000)]
+  0x00007f37d84d5000 JavaThread "CLEANUP_MANAGER" [_thread_blocked, id=9182, stack(0x00007f37a75a9000,0x00007f37a76aa000)]
+  0x00007f37d84c7800 JavaThread "CHECKPOINT_WRITER" [_thread_blocked, id=9181, stack(0x00007f37a76aa000,0x00007f37a77ab000)]
+  0x00007f37d84c5000 JavaThread "TXN_UPDATE" [_thread_blocked, id=9180, stack(0x00007f37a77ab000,0x00007f37a78ac000)]
+  0x00007f37d84b6800 JavaThread "PAGE_WRITER:8192" [_thread_blocked, id=9179, stack(0x00007f37a7aac000,0x00007f37a7bad000)]
+  0x00007f37d84b5000 JavaThread "JOURNAL_FLUSHER" [_thread_blocked, id=9178, stack(0x00007f37a7bad000,0x00007f37a7cae000)]
+  0x00007f37d84b4800 JavaThread "JOURNAL_COPIER" [_thread_blocked, id=9177, stack(0x00007f37a7cae000,0x00007f37a7daf000)]
+  0x00007f37d848e000 JavaThread "LOG_FLUSHER" daemon [_thread_blocked, id=9176, stack(0x00007f37a7daf000,0x00007f37a7eb0000)]
+  0x00007f37d841e000 JavaThread "Okio Watchdog" daemon [_thread_blocked, id=9175, stack(0x00007f37a82b9000,0x00007f37a83ba000)]
+  0x00007f37d841c800 JavaThread "OkHttp ConnectionPool" daemon [_thread_blocked, id=9174, stack(0x00007f37a83ba000,0x00007f37a84bb000)]
+  0x00007f37d823d000 JavaThread "Okio Watchdog" daemon [_thread_blocked, id=9173, stack(0x00007f37a89db000,0x00007f37a8adc000)]
+  0x00007f37d823b800 JavaThread "OkHttp ConnectionPool" daemon [_thread_blocked, id=9172, stack(0x00007f37a8adc000,0x00007f37a8bdd000)]
+  0x00007f37d80c6000 JavaThread "Service Thread" daemon [_thread_blocked, id=9170, stack(0x00007f37c8bfc000,0x00007f37c8cfd000)]
+  0x00007f37d80b1000 JavaThread "C1 CompilerThread1" daemon [_thread_blocked, id=9169, stack(0x00007f37c8cfd000,0x00007f37c8dfe000)]
+  0x00007f37d80af000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=9168, stack(0x00007f37c8dfe000,0x00007f37c8eff000)]
+  0x00007f37d80aa800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=9167, stack(0x00007f37c8eff000,0x00007f37c9000000)]
+  0x00007f37d807a800 JavaThread "Finalizer" daemon [_thread_blocked, id=9166, stack(0x00007f37dc22f000,0x00007f37dc330000)]
+  0x00007f37d8076000 JavaThread "Reference Handler" daemon [_thread_blocked, id=9165, stack(0x00007f37dc330000,0x00007f37dc431000)]
+  0x00007f37d800a000 JavaThread "main" [_thread_blocked, id=9163, stack(0x00007f37e0399000,0x00007f37e049a000)]
+
+Other Threads:
+=>0x00007f37d806e800 VMThread [stack: 0x00007f37dc431000,0x00007f37dc532000] [id=9164]
+  0x00007f37d80c9800 WatcherThread [stack: 0x00007f37c8afb000,0x00007f37c8bfc000] [id=9171]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f37d8006200] Threads_lock - owner thread: 0x00007f37d806e800
+[0x00007f37d8006700] Heap_lock - owner thread: 0x00007f37d800a000
+
+Heap:
+ def new generation   total 57792K, used 0K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K,   0% used [0x00000000e0a00000, 0x00000000e0a00000, 0x00000000e3c30000)
+  from space 6400K,   0% used [0x00000000e4270000, 0x00000000e4270000, 0x00000000e48b0000)
+  to   space 6400K,   0% used [0x00000000e3c30000, 0x00000000e3c30000, 0x00000000e4270000)
+ tenured generation   total 129184K, used 128472K [0x00000000eb150000, 0x00000000f2f78000, 0x0000000100000000)
+   the space 129184K,  99% used [0x00000000eb150000, 0x00000000f2ec61f0, 0x00000000f2ec6200, 0x00000000f2f78000)
+ Metaspace       used 48236K, capacity 50538K, committed 50816K, reserved 1093632K
+  class space    used 6200K, capacity 6707K, committed 6784K, reserved 1048576K
+
+Card table byte_map: [0x00007f37dd02b000,0x00007f37dd127000] byte_map_base: 0x00007f37dc926000
+
+Polling page: 0x00007f37e04a4000
+
+CodeCache: size=245760Kb used=18133Kb max_used=18860Kb free=227626Kb
+ bounds [0x00007f37c9000000, 0x00007f37ca290000, 0x00007f37d8000000]
+ total_blobs=7289 nmethods=6836 adapters=366
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 24.058 Thread 0x00007f37d80af000 nmethod 7908 0x00007f37c956ab90 code [0x00007f37c956ad20, 0x00007f37c956b358]
+Event: 24.058 Thread 0x00007f37d80af000 7921       4       org.sonar.php.checks.utils.CheckUtils::nameOf (136 bytes)
+Event: 24.059 Thread 0x00007f37d80b1000 7922       3       org.sonar.php.tree.impl.declaration.FunctionDeclarationTreeImpl::body (5 bytes)
+Event: 24.059 Thread 0x00007f37d80b1000 nmethod 7922 0x00007f37c9132c90 code [0x00007f37c9132e00, 0x00007f37c9132f70]
+Event: 24.063 Thread 0x00007f37d80b1000 7923       3       org.sonar.php.tree.impl.declaration.ClassPropertyDeclarationTreeImpl::declarations (5 bytes)
+Event: 24.063 Thread 0x00007f37d80b1000 nmethod 7923 0x00007f37c939b690 code [0x00007f37c939b800, 0x00007f37c939b970]
+Event: 24.080 Thread 0x00007f37d80af000 nmethod 7921 0x00007f37c9ad4c10 code [0x00007f37c9ad4de0, 0x00007f37c9ad5358]
+Event: 24.080 Thread 0x00007f37d80af000 7909       4       org.sonar.php.checks.utils.FunctionUsageCheck::visitFunctionCall (24 bytes)
+Event: 24.085 Thread 0x00007f37d80b1000 7928       2       java.lang.Double::toString (8 bytes)
+Event: 24.085 Thread 0x00007f37d80b1000 nmethod 7928 0x00007f37c928a650 code [0x00007f37c928a7c0, 0x00007f37c928a950]
+
+GC Heap History (10 events):
+Event: 22.510 GC heap after
+Heap after GC invocations=41 (full 4):
+ def new generation   total 57792K, used 532K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K,   0% used [0x00000000e0a00000, 0x00000000e0a00000, 0x00000000e3c30000)
+  from space 6400K,   8% used [0x00000000e3c30000, 0x00000000e3cb5128, 0x00000000e4270000)
+  to   space 6400K,   0% used [0x00000000e4270000, 0x00000000e4270000, 0x00000000e48b0000)
+ tenured generation   total 128224K, used 111116K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  86% used [0x00000000eb150000, 0x00000000f1dd32d0, 0x00000000f1dd3400, 0x00000000f2e88000)
+ Metaspace       used 48075K, capacity 50352K, committed 50560K, reserved 1093632K
+  class space    used 6194K, capacity 6698K, committed 6784K, reserved 1048576K
+}
+Event: 22.750 GC heap before
+{Heap before GC invocations=41 (full 4):
+ def new generation   total 57792K, used 51924K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K, 100% used [0x00000000e0a00000, 0x00000000e3c30000, 0x00000000e3c30000)
+  from space 6400K,   8% used [0x00000000e3c30000, 0x00000000e3cb5128, 0x00000000e4270000)
+  to   space 6400K,   0% used [0x00000000e4270000, 0x00000000e4270000, 0x00000000e48b0000)
+ tenured generation   total 128224K, used 111116K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  86% used [0x00000000eb150000, 0x00000000f1dd32d0, 0x00000000f1dd3400, 0x00000000f2e88000)
+ Metaspace       used 48110K, capacity 50360K, committed 50560K, reserved 1093632K
+  class space    used 6196K, capacity 6700K, committed 6784K, reserved 1048576K
+Event: 22.753 GC heap after
+Heap after GC invocations=42 (full 4):
+ def new generation   total 57792K, used 623K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K,   0% used [0x00000000e0a00000, 0x00000000e0a00000, 0x00000000e3c30000)
+  from space 6400K,   9% used [0x00000000e4270000, 0x00000000e430bcd0, 0x00000000e48b0000)
+  to   space 6400K,   0% used [0x00000000e3c30000, 0x00000000e3c30000, 0x00000000e4270000)
+ tenured generation   total 128224K, used 111116K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  86% used [0x00000000eb150000, 0x00000000f1dd32d0, 0x00000000f1dd3400, 0x00000000f2e88000)
+ Metaspace       used 48110K, capacity 50360K, committed 50560K, reserved 1093632K
+  class space    used 6196K, capacity 6700K, committed 6784K, reserved 1048576K
+}
+Event: 23.176 GC heap before
+{Heap before GC invocations=42 (full 4):
+ def new generation   total 57792K, used 52015K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K, 100% used [0x00000000e0a00000, 0x00000000e3c30000, 0x00000000e3c30000)
+  from space 6400K,   9% used [0x00000000e4270000, 0x00000000e430bcd0, 0x00000000e48b0000)
+  to   space 6400K,   0% used [0x00000000e3c30000, 0x00000000e3c30000, 0x00000000e4270000)
+ tenured generation   total 128224K, used 111116K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  86% used [0x00000000eb150000, 0x00000000f1dd32d0, 0x00000000f1dd3400, 0x00000000f2e88000)
+ Metaspace       used 48187K, capacity 50446K, committed 50560K, reserved 1093632K
+  class space    used 6198K, capacity 6703K, committed 6784K, reserved 1048576K
+Event: 23.230 GC heap after
+Heap after GC invocations=43 (full 4):
+ def new generation   total 57792K, used 6399K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K,   0% used [0x00000000e0a00000, 0x00000000e0a00000, 0x00000000e3c30000)
+  from space 6400K,  99% used [0x00000000e3c30000, 0x00000000e426fff8, 0x00000000e4270000)
+  to   space 6400K,   0% used [0x00000000e4270000, 0x00000000e4270000, 0x00000000e48b0000)
+ tenured generation   total 128224K, used 113526K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  88% used [0x00000000eb150000, 0x00000000f202db70, 0x00000000f202dc00, 0x00000000f2e88000)
+ Metaspace       used 48187K, capacity 50446K, committed 50560K, reserved 1093632K
+  class space    used 6198K, capacity 6703K, committed 6784K, reserved 1048576K
+}
+Event: 23.487 GC heap before
+{Heap before GC invocations=43 (full 4):
+ def new generation   total 57792K, used 57791K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K, 100% used [0x00000000e0a00000, 0x00000000e3c30000, 0x00000000e3c30000)
+  from space 6400K,  99% used [0x00000000e3c30000, 0x00000000e426fff8, 0x00000000e4270000)
+  to   space 6400K,   0% used [0x00000000e4270000, 0x00000000e4270000, 0x00000000e48b0000)
+ tenured generation   total 128224K, used 113526K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  88% used [0x00000000eb150000, 0x00000000f202db70, 0x00000000f202dc00, 0x00000000f2e88000)
+ Metaspace       used 48217K, capacity 50514K, committed 50816K, reserved 1093632K
+  class space    used 6198K, capacity 6703K, committed 6784K, reserved 1048576K
+Event: 23.519 GC heap after
+Heap after GC invocations=44 (full 4):
+ def new generation   total 57792K, used 3263K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K,   0% used [0x00000000e0a00000, 0x00000000e0a00000, 0x00000000e3c30000)
+  from space 6400K,  50% used [0x00000000e4270000, 0x00000000e459fe58, 0x00000000e48b0000)
+  to   space 6400K,   0% used [0x00000000e3c30000, 0x00000000e3c30000, 0x00000000e4270000)
+ tenured generation   total 128224K, used 119610K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  93% used [0x00000000eb150000, 0x00000000f261ea50, 0x00000000f261ec00, 0x00000000f2e88000)
+ Metaspace       used 48217K, capacity 50514K, committed 50816K, reserved 1093632K
+  class space    used 6198K, capacity 6703K, committed 6784K, reserved 1048576K
+}
+Event: 23.818 GC heap before
+{Heap before GC invocations=44 (full 4):
+ def new generation   total 57792K, used 54655K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K, 100% used [0x00000000e0a00000, 0x00000000e3c30000, 0x00000000e3c30000)
+  from space 6400K,  50% used [0x00000000e4270000, 0x00000000e459fe58, 0x00000000e48b0000)
+  to   space 6400K,   0% used [0x00000000e3c30000, 0x00000000e3c30000, 0x00000000e4270000)
+ tenured generation   total 128224K, used 119610K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  93% used [0x00000000eb150000, 0x00000000f261ea50, 0x00000000f261ec00, 0x00000000f2e88000)
+ Metaspace       used 48231K, capacity 50538K, committed 50816K, reserved 1093632K
+  class space    used 6200K, capacity 6707K, committed 6784K, reserved 1048576K
+Event: 23.863 GC heap after
+Heap after GC invocations=45 (full 4):
+ def new generation   total 57792K, used 6225K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K,   0% used [0x00000000e0a00000, 0x00000000e0a00000, 0x00000000e3c30000)
+  from space 6400K,  97% used [0x00000000e3c30000, 0x00000000e42445e0, 0x00000000e4270000)
+  to   space 6400K,   0% used [0x00000000e4270000, 0x00000000e4270000, 0x00000000e48b0000)
+ tenured generation   total 128224K, used 122769K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  95% used [0x00000000eb150000, 0x00000000f2934700, 0x00000000f2934800, 0x00000000f2e88000)
+ Metaspace       used 48231K, capacity 50538K, committed 50816K, reserved 1093632K
+  class space    used 6200K, capacity 6707K, committed 6784K, reserved 1048576K
+}
+Event: 24.090 GC heap before
+{Heap before GC invocations=45 (full 4):
+ def new generation   total 57792K, used 57617K [0x00000000e0a00000, 0x00000000e48b0000, 0x00000000eb150000)
+  eden space 51392K, 100% used [0x00000000e0a00000, 0x00000000e3c30000, 0x00000000e3c30000)
+  from space 6400K,  97% used [0x00000000e3c30000, 0x00000000e42445e0, 0x00000000e4270000)
+  to   space 6400K,   0% used [0x00000000e4270000, 0x00000000e4270000, 0x00000000e48b0000)
+ tenured generation   total 128224K, used 122769K [0x00000000eb150000, 0x00000000f2e88000, 0x0000000100000000)
+   the space 128224K,  95% used [0x00000000eb150000, 0x00000000f2934700, 0x00000000f2934800, 0x00000000f2e88000)
+ Metaspace       used 48236K, capacity 50538K, committed 50816K, reserved 1093632K
+  class space    used 6200K, capacity 6707K, committed 6784K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 19.849 Thread 0x00007f37d800a000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f37c9888b74 method=sun.nio.cs.UTF_8$Decoder.decodeArrayLoop(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;)Ljava/nio/charset/CoderResult; @ 84
+Event: 20.760 Thread 0x00007f37d800a000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f37ca0e234c method=java.util.regex.Pattern$Neg.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 42
+Event: 20.993 Thread 0x00007f37d800a000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f37ca0e9330 method=java.util.regex.Pattern$Neg.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 29
+Event: 21.457 Thread 0x00007f37d800a000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f37ca0d28f8 method=org.sonar.php.tree.symbols.Scope.getSymbol(Ljava/lang/String;[Lorg/sonar/plugins/php/api/symbols/Symbol$Kind;)Lorg/sonar/plugins/php/api/symbols/Symbol; @ 62
+Event: 21.705 Thread 0x00007f37d800a000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f37ca129b64 method=java.lang.String.split(Ljava/lang/String;I)[Ljava/lang/String; @ 8
+Event: 21.732 Thread 0x00007f37d800a000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f37ca126948 method=java.util.regex.Pattern.split(Ljava/lang/CharSequence;I)[Ljava/lang/String; @ 63
+Event: 23.873 Thread 0x00007f37d800a000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f37ca1a8d40 method=org.sonar.php.checks.utils.CheckUtils.nameOf(Lorg/sonar/plugins/php/api/tree/Tree;)Ljava/lang/String; @ 69
+Event: 23.905 Thread 0x00007f37d800a000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f37ca1a8d40 method=org.sonar.php.checks.utils.CheckUtils.nameOf(Lorg/sonar/plugins/php/api/tree/Tree;)Ljava/lang/String; @ 69
+Event: 23.905 Thread 0x00007f37d800a000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f37ca1a8d40 method=org.sonar.php.checks.utils.CheckUtils.nameOf(Lorg/sonar/plugins/php/api/tree/Tree;)Ljava/lang/String; @ 69
+Event: 23.905 Thread 0x00007f37d800a000 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f37ca1a8d40 method=org.sonar.php.checks.utils.CheckUtils.nameOf(Lorg/sonar/plugins/php/api/tree/Tree;)Ljava/lang/String; @ 69
+
+Internal exceptions (10 events):
+Event: 5.301 Thread 0x00007f37d800a000 Exception <a 'java/lang/NoSuchMethodError': java.lang.Object.lambda$identity$2(Ljava/lang/Object;)Ljava/lang/Object;> (0x00000000e17e90f8) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/interpreter/linkResolver.cpp,
+Event: 6.451 Thread 0x00007f37d800a000 Exception <a 'sun/nio/fs/UnixException'> (0x00000000e1568688) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 6.616 Thread 0x00007f37d800a000 Exception <a 'sun/nio/fs/UnixException'> (0x00000000e18cb460) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 9.038 Thread 0x00007f37d800a000 Exception <a 'java/lang/IncompatibleClassChangeError': Found class java.lang.Object, but interface was expected> (0x00000000e1740d50) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/interpreter/linkResolver.cpp, line
+Event: 9.523 Thread 0x00007f37d88fa800 Exception <a 'java/lang/InterruptedException': sleep interrupted> (0x00000000e0f94ad0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/prims/jvm.cpp, line 3228]
+Event: 12.656 Thread 0x00007f37d800a000 Exception <a 'java/io/IOException'> (0x00000000e27438b8) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 16.765 Thread 0x00007f37d8c91800 Exception <a 'java/lang/InterruptedException': sleep interrupted> (0x00000000e212e120) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/prims/jvm.cpp, line 3228]
+Event: 16.803 Thread 0x00007f37d800a000 Implicit null exception at 0x00007f37c9333175 to 0x00007f37c9333519
+Event: 16.991 Thread 0x00007f37d8b0a800 Exception <a 'java/lang/InterruptedException': sleep interrupted> (0x00000000e24a2820) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/prims/jvm.cpp, line 3228]
+Event: 18.596 Thread 0x00007f37d800a000 Implicit null exception at 0x00007f37c911d226 to 0x00007f37c911d55d
+
+Events (10 events):
+Event: 23.921 Thread 0x00007f37d80af000 flushing nmethod 0x00007f37c9d2c410
+Event: 23.921 Thread 0x00007f37d80af000 flushing nmethod 0x00007f37c9d2c810
+Event: 23.921 Thread 0x00007f37d80af000 flushing nmethod 0x00007f37c9d2d350
+Event: 23.921 Thread 0x00007f37d80af000 flushing nmethod 0x00007f37c9d2d790
+Event: 23.921 Thread 0x00007f37d80af000 flushing nmethod 0x00007f37c9d2db90
+Event: 23.921 Thread 0x00007f37d80af000 flushing nmethod 0x00007f37c9d313d0
+Event: 23.921 Thread 0x00007f37d80af000 flushing nmethod 0x00007f37c9d31b90
+Event: 23.921 Thread 0x00007f37d80af000 flushing nmethod 0x00007f37c9d33510
+Event: 23.921 Thread 0x00007f37d80af000 flushing nmethod 0x00007f37c9dbbfd0
+Event: 24.090 Executing VM operation: GenCollectForAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 fd:01 517788                             /home/fsilva/sonar-scanner/jre/bin/java
+00600000-00601000 rw-p 00000000 fd:01 517788                             /home/fsilva/sonar-scanner/jre/bin/java
+0069b000-0094f000 rw-p 00000000 00:00 0                                  [heap]
+e0a00000-e48b0000 rw-p 00000000 00:00 0 
+e48b0000-eb150000 ---p 00000000 00:00 0 
+eb150000-f2f78000 rw-p 00000000 00:00 0 
+f826b000-100000000 ---p 00000000 00:00 0 
+100000000-1006a0000 rw-p 00000000 00:00 0 
+1006a0000-140000000 ---p 00000000 00:00 0 
+7f37a578c000-7f37a588c000 rw-p 00000000 00:00 0 
+7f37a588c000-7f37a598c000 ---p 00000000 00:00 0 
+7f37a598c000-7f37a5b8c000 rw-p 00000000 00:00 0 
+7f37a5b8c000-7f37a5d8c000 rw-p 00000000 00:00 0 
+7f37a5d8c000-7f37a5f8c000 rw-p 00000000 00:00 0 
+7f37a5f8c000-7f37a618c000 rw-p 00000000 00:00 0 
+7f37a61df000-7f37a63df000 rw-p 00000000 00:00 0 
+7f37a63df000-7f37a65df000 rw-p 00000000 00:00 0 
+7f37a65df000-7f37a67df000 rw-p 00000000 00:00 0 
+7f37a67df000-7f37a69df000 rw-p 00000000 00:00 0 
+7f37a69df000-7f37a69e2000 ---p 00000000 00:00 0 
+7f37a69e2000-7f37a6ae0000 rw-p 00000000 00:00 0 
+7f37a6ae0000-7f37a6ae3000 ---p 00000000 00:00 0 
+7f37a6ae3000-7f37a6de1000 rw-p 00000000 00:00 0 
+7f37a6de1000-7f37a6fe1000 rw-p 00000000 00:00 0 
+7f37a6fe1000-7f37a71e1000 rw-p 00000000 00:00 0 
+7f37a71e1000-7f37a73e1000 rw-p 00000000 00:00 0 
+7f37a73e1000-7f37a7418000 r--s 00253000 fd:01 517827                     /home/fsilva/.sonar/cache/d0a24add6ef04168ce86a24b532df782/sonar-php-plugin.jar
+7f37a7418000-7f37a7442000 r--s 0025e000 fd:01 517809                     /home/fsilva/.sonar/cache/41e5fb381075759ee0274f6dcb7abbff/sonar-scmgit-plugin.jar
+7f37a7442000-7f37a7464000 r--s 00159000 fd:01 517817                     /home/fsilva/.sonar/cache/09ae824d3796a4a92678af9454dcfbff/sonar-flex-plugin.jar
+7f37a7464000-7f37a7500000 r--s 007f6000 fd:01 517823                     /home/fsilva/.sonar/cache/1763b21e82aecbdd5fb164ec310e1b68/sonar-java-plugin.jar
+7f37a7500000-7f37a7549000 r--s 00306000 fd:01 517821                     /home/fsilva/.sonar/cache/843b62c05fc5971b1bdb38904ec3e8f4/sonar-javascript-plugin.jar
+7f37a7549000-7f37a75a9000 r--s 00684000 fd:01 517835                     /home/fsilva/.sonar/cache/f36a34de1eab142e98daffc6a4c815c8/sonar-scmsvn-plugin.jar
+7f37a75a9000-7f37a75ac000 ---p 00000000 00:00 0 
+7f37a75ac000-7f37a76aa000 rw-p 00000000 00:00 0 
+7f37a76aa000-7f37a76ad000 ---p 00000000 00:00 0 
+7f37a76ad000-7f37a77ab000 rw-p 00000000 00:00 0 
+7f37a77ab000-7f37a77ae000 ---p 00000000 00:00 0 
+7f37a77ae000-7f37a7aac000 rw-p 00000000 00:00 0 
+7f37a7aac000-7f37a7aaf000 ---p 00000000 00:00 0 
+7f37a7aaf000-7f37a7bad000 rw-p 00000000 00:00 0 
+7f37a7bad000-7f37a7bb0000 ---p 00000000 00:00 0 
+7f37a7bb0000-7f37a7cae000 rw-p 00000000 00:00 0 
+7f37a7cae000-7f37a7cb1000 ---p 00000000 00:00 0 
+7f37a7cb1000-7f37a7daf000 rw-p 00000000 00:00 0 
+7f37a7daf000-7f37a7db2000 ---p 00000000 00:00 0 
+7f37a7db2000-7f37a7eb0000 rw-p 00000000 00:00 0 
+7f37a7eb0000-7f37a7eb9000 r-xp 00000000 fd:01 517587                     /home/fsilva/sonar-scanner/jre/lib/amd64/libmanagement.so
+7f37a7eb9000-7f37a80b8000 ---p 00009000 fd:01 517587                     /home/fsilva/sonar-scanner/jre/lib/amd64/libmanagement.so
+7f37a80b8000-7f37a80b9000 rw-p 00008000 fd:01 517587                     /home/fsilva/sonar-scanner/jre/lib/amd64/libmanagement.so
+7f37a80b9000-7f37a82b9000 rw-p 00000000 00:00 0 
+7f37a82b9000-7f37a82bc000 ---p 00000000 00:00 0 
+7f37a82bc000-7f37a83ba000 rw-p 00000000 00:00 0 
+7f37a83ba000-7f37a83bd000 ---p 00000000 00:00 0 
+7f37a83bd000-7f37a86bb000 rw-p 00000000 00:00 0 
+7f37a86bb000-7f37a88bb000 rw-p 00000000 00:00 0 
+7f37a88bb000-7f37a89db000 r--s 01722000 fd:01 517801                     /home/fsilva/.sonar/cache/da9310bb9fdabea7c7071706af6a955b/sonar-scanner-engine-shaded-7.3-all.jar
+7f37a89db000-7f37a89de000 ---p 00000000 00:00 0 
+7f37a89de000-7f37a8adc000 rw-p 00000000 00:00 0 
+7f37a8adc000-7f37a8adf000 ---p 00000000 00:00 0 
+7f37a8adf000-7f37a8bdd000 rw-p 00000000 00:00 0 
+7f37a8bdd000-7f37a8bf4000 r-xp 00000000 fd:01 1991                       /lib/x86_64-linux-gnu/libresolv-2.23.so
+7f37a8bf4000-7f37a8df4000 ---p 00017000 fd:01 1991                       /lib/x86_64-linux-gnu/libresolv-2.23.so
+7f37a8df4000-7f37a8df5000 r--p 00017000 fd:01 1991                       /lib/x86_64-linux-gnu/libresolv-2.23.so
+7f37a8df5000-7f37a8df6000 rw-p 00018000 fd:01 1991                       /lib/x86_64-linux-gnu/libresolv-2.23.so
+7f37a8df6000-7f37a8df8000 rw-p 00000000 00:00 0 
+7f37a8df8000-7f37a8dfd000 r-xp 00000000 fd:01 2001                       /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7f37a8dfd000-7f37a8ffd000 ---p 00005000 fd:01 2001                       /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7f37a8ffd000-7f37a8ffe000 r--p 00005000 fd:01 2001                       /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7f37a8ffe000-7f37a8fff000 rw-p 00006000 fd:01 2001                       /lib/x86_64-linux-gnu/libnss_dns-2.23.so
+7f37a8fff000-7f37ac000000 rw-p 00000000 00:00 0 
+7f37ac000000-7f37ad010000 rw-p 00000000 00:00 0 
+7f37ad010000-7f37b0000000 ---p 00000000 00:00 0 
+7f37b0000000-7f37b0021000 rw-p 00000000 00:00 0 
+7f37b0021000-7f37b4000000 ---p 00000000 00:00 0 
+7f37b4000000-7f37b4021000 rw-p 00000000 00:00 0 
+7f37b4021000-7f37b8000000 ---p 00000000 00:00 0 
+7f37b8000000-7f37b93d1000 rw-p 00000000 00:00 0 
+7f37b93d1000-7f37bc000000 ---p 00000000 00:00 0 
+7f37bc000000-7f37bc021000 rw-p 00000000 00:00 0 
+7f37bc021000-7f37c0000000 ---p 00000000 00:00 0 
+7f37c0000000-7f37c0021000 rw-p 00000000 00:00 0 
+7f37c0021000-7f37c4000000 ---p 00000000 00:00 0 
+7f37c4000000-7f37c42f6000 rw-p 00000000 00:00 0 
+7f37c42f6000-7f37c8000000 ---p 00000000 00:00 0 
+7f37c8012000-7f37c8076000 r--s 004eb000 fd:01 517825                     /home/fsilva/.sonar/cache/efd3c7682365423b7306affb72a7137b/sonar-kotlin-plugin.jar
+7f37c8076000-7f37c8276000 rw-p 00000000 00:00 0 
+7f37c8276000-7f37c828c000 r-xp 00000000 fd:01 1981                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f37c828c000-7f37c848b000 ---p 00016000 fd:01 1981                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f37c848b000-7f37c848c000 rw-p 00015000 fd:01 1981                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f37c848c000-7f37c84be000 r-xp 00000000 fd:01 517561                     /home/fsilva/sonar-scanner/jre/lib/amd64/libsunec.so
+7f37c84be000-7f37c86bd000 ---p 00032000 fd:01 517561                     /home/fsilva/sonar-scanner/jre/lib/amd64/libsunec.so
+7f37c86bd000-7f37c86c3000 rw-p 00031000 fd:01 517561                     /home/fsilva/sonar-scanner/jre/lib/amd64/libsunec.so
+7f37c86c3000-7f37c86d3000 rw-p 00000000 00:00 0 
+7f37c86d3000-7f37c86e9000 r-xp 00000000 fd:01 517708                     /home/fsilva/sonar-scanner/jre/lib/amd64/libnet.so
+7f37c86e9000-7f37c88e9000 ---p 00016000 fd:01 517708                     /home/fsilva/sonar-scanner/jre/lib/amd64/libnet.so
+7f37c88e9000-7f37c88ea000 rw-p 00016000 fd:01 517708                     /home/fsilva/sonar-scanner/jre/lib/amd64/libnet.so
+7f37c88ea000-7f37c88fb000 r-xp 00000000 fd:01 517578                     /home/fsilva/sonar-scanner/jre/lib/amd64/libnio.so
+7f37c88fb000-7f37c8afa000 ---p 00011000 fd:01 517578                     /home/fsilva/sonar-scanner/jre/lib/amd64/libnio.so
+7f37c8afa000-7f37c8afb000 rw-p 00010000 fd:01 517578                     /home/fsilva/sonar-scanner/jre/lib/amd64/libnio.so
+7f37c8afb000-7f37c8afc000 ---p 00000000 00:00 0 
+7f37c8afc000-7f37c8bfc000 rw-p 00000000 00:00 0 
+7f37c8bfc000-7f37c8bff000 ---p 00000000 00:00 0 
+7f37c8bff000-7f37c8cfd000 rw-p 00000000 00:00 0 
+7f37c8cfd000-7f37c8d00000 ---p 00000000 00:00 0 
+7f37c8d00000-7f37c8dfe000 rw-p 00000000 00:00 0 
+7f37c8dfe000-7f37c8e01000 ---p 00000000 00:00 0 
+7f37c8e01000-7f37c8eff000 rw-p 00000000 00:00 0 
+7f37c8eff000-7f37c8f02000 ---p 00000000 00:00 0 
+7f37c8f02000-7f37c9000000 rw-p 00000000 00:00 0 
+7f37c9000000-7f37ca290000 rwxp 00000000 00:00 0 
+7f37ca290000-7f37d8000000 ---p 00000000 00:00 0 
+7f37d8000000-7f37d8dd2000 rw-p 00000000 00:00 0 
+7f37d8dd2000-7f37dc000000 ---p 00000000 00:00 0 
+7f37dc009000-7f37dc01a000 r--s 001f0000 fd:01 517831                     /home/fsilva/.sonar/cache/8313c4aaa33b4c3c00652ffe3db2dc2c/sonar-typescript-plugin.jar
+7f37dc01a000-7f37dc03a000 r--s 00194000 fd:01 517833                     /home/fsilva/.sonar/cache/302e7d3fd41752f4113d4185ce94852a/sonar-xml-plugin.jar
+7f37dc03a000-7f37dc048000 r--s 00176000 fd:01 517813                     /home/fsilva/.sonar/cache/5f6acdd4a0f014aa9d8942c284f29f3c/sonar-csharp-plugin.jar
+7f37dc048000-7f37dc054000 r--s 003ae000 fd:01 517819                     /home/fsilva/.sonar/cache/05b8716296f0a4fdbd741af867516597/sonar-go-plugin.jar
+7f37dc054000-7f37dc067000 r--s 005ad000 fd:01 517815                     /home/fsilva/.sonar/cache/b6272429eaf9d939027f8ef688aaf1bc/sonar-cssfamily-plugin.jar
+7f37dc067000-7f37dc084000 r--s 00161000 fd:01 517829                     /home/fsilva/.sonar/cache/a25e0410f3b46edbf61087b7b994eecb/sonar-python-plugin.jar
+7f37dc084000-7f37dc097000 r--s 00345000 fd:01 517699                     /home/fsilva/sonar-scanner/jre/lib/resources.jar
+7f37dc097000-7f37dc22f000 r--p 00000000 fd:01 29091                      /usr/lib/locale/locale-archive
+7f37dc22f000-7f37dc232000 ---p 00000000 00:00 0 
+7f37dc232000-7f37dc330000 rw-p 00000000 00:00 0 
+7f37dc330000-7f37dc333000 ---p 00000000 00:00 0 
+7f37dc333000-7f37dc431000 rw-p 00000000 00:00 0 
+7f37dc431000-7f37dc432000 ---p 00000000 00:00 0 
+7f37dc432000-7f37dc581000 rw-p 00000000 00:00 0 
+7f37dc581000-7f37dc75a000 r--s 03d3e000 fd:01 517559                     /home/fsilva/sonar-scanner/jre/lib/rt.jar
+7f37dc75a000-7f37dd02b000 rw-p 00000000 00:00 0 
+7f37dd02b000-7f37dd04b000 rw-p 00000000 00:00 0 
+7f37dd04b000-7f37dd07e000 ---p 00000000 00:00 0 
+7f37dd07e000-7f37dd0be000 rw-p 00000000 00:00 0 
+7f37dd0be000-7f37dd126000 ---p 00000000 00:00 0 
+7f37dd126000-7f37dd172000 rw-p 00000000 00:00 0 
+7f37dd172000-7f37dd4e7000 ---p 00000000 00:00 0 
+7f37dd4e7000-7f37dd501000 r-xp 00000000 fd:01 517576                     /home/fsilva/sonar-scanner/jre/lib/amd64/libzip.so
+7f37dd501000-7f37dd701000 ---p 0001a000 fd:01 517576                     /home/fsilva/sonar-scanner/jre/lib/amd64/libzip.so
+7f37dd701000-7f37dd702000 rw-p 0001a000 fd:01 517576                     /home/fsilva/sonar-scanner/jre/lib/amd64/libzip.so
+7f37dd702000-7f37dd70d000 r-xp 00000000 fd:01 2007                       /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f37dd70d000-7f37dd90c000 ---p 0000b000 fd:01 2007                       /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f37dd90c000-7f37dd90d000 r--p 0000a000 fd:01 2007                       /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f37dd90d000-7f37dd90e000 rw-p 0000b000 fd:01 2007                       /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f37dd90e000-7f37dd914000 rw-p 00000000 00:00 0 
+7f37dd914000-7f37dd91f000 r-xp 00000000 fd:01 2011                       /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f37dd91f000-7f37ddb1e000 ---p 0000b000 fd:01 2011                       /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f37ddb1e000-7f37ddb1f000 r--p 0000a000 fd:01 2011                       /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f37ddb1f000-7f37ddb20000 rw-p 0000b000 fd:01 2011                       /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f37ddb20000-7f37ddb36000 r-xp 00000000 fd:01 1984                       /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f37ddb36000-7f37ddd35000 ---p 00016000 fd:01 1984                       /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f37ddd35000-7f37ddd36000 r--p 00015000 fd:01 1984                       /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f37ddd36000-7f37ddd37000 rw-p 00016000 fd:01 1984                       /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f37ddd37000-7f37ddd39000 rw-p 00000000 00:00 0 
+7f37ddd39000-7f37ddd41000 r-xp 00000000 fd:01 1999                       /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f37ddd41000-7f37ddf40000 ---p 00008000 fd:01 1999                       /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f37ddf40000-7f37ddf41000 r--p 00007000 fd:01 1999                       /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f37ddf41000-7f37ddf42000 rw-p 00008000 fd:01 1999                       /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f37ddf42000-7f37ddf6d000 r-xp 00000000 fd:01 517600                     /home/fsilva/sonar-scanner/jre/lib/amd64/libjava.so
+7f37ddf6d000-7f37de16c000 ---p 0002b000 fd:01 517600                     /home/fsilva/sonar-scanner/jre/lib/amd64/libjava.so
+7f37de16c000-7f37de16e000 rw-p 0002a000 fd:01 517600                     /home/fsilva/sonar-scanner/jre/lib/amd64/libjava.so
+7f37de16e000-7f37de17b000 r-xp 00000000 fd:01 517709                     /home/fsilva/sonar-scanner/jre/lib/amd64/libverify.so
+7f37de17b000-7f37de37a000 ---p 0000d000 fd:01 517709                     /home/fsilva/sonar-scanner/jre/lib/amd64/libverify.so
+7f37de37a000-7f37de37c000 rw-p 0000c000 fd:01 517709                     /home/fsilva/sonar-scanner/jre/lib/amd64/libverify.so
+7f37de37c000-7f37de383000 r-xp 00000000 fd:01 2012                       /lib/x86_64-linux-gnu/librt-2.23.so
+7f37de383000-7f37de582000 ---p 00007000 fd:01 2012                       /lib/x86_64-linux-gnu/librt-2.23.so
+7f37de582000-7f37de583000 r--p 00006000 fd:01 2012                       /lib/x86_64-linux-gnu/librt-2.23.so
+7f37de583000-7f37de584000 rw-p 00007000 fd:01 2012                       /lib/x86_64-linux-gnu/librt-2.23.so
+7f37de584000-7f37de68c000 r-xp 00000000 fd:01 1983                       /lib/x86_64-linux-gnu/libm-2.23.so
+7f37de68c000-7f37de88b000 ---p 00108000 fd:01 1983                       /lib/x86_64-linux-gnu/libm-2.23.so
+7f37de88b000-7f37de88c000 r--p 00107000 fd:01 1983                       /lib/x86_64-linux-gnu/libm-2.23.so
+7f37de88c000-7f37de88d000 rw-p 00108000 fd:01 1983                       /lib/x86_64-linux-gnu/libm-2.23.so
+7f37de88d000-7f37df55b000 r-xp 00000000 fd:01 517603                     /home/fsilva/sonar-scanner/jre/lib/amd64/server/libjvm.so
+7f37df55b000-7f37df75b000 ---p 00cce000 fd:01 517603                     /home/fsilva/sonar-scanner/jre/lib/amd64/server/libjvm.so
+7f37df75b000-7f37df834000 rw-p 00cce000 fd:01 517603                     /home/fsilva/sonar-scanner/jre/lib/amd64/server/libjvm.so
+7f37df834000-7f37df87f000 rw-p 00000000 00:00 0 
+7f37df87f000-7f37dfa3f000 r-xp 00000000 fd:01 1987                       /lib/x86_64-linux-gnu/libc-2.23.so
+7f37dfa3f000-7f37dfc3f000 ---p 001c0000 fd:01 1987                       /lib/x86_64-linux-gnu/libc-2.23.so
+7f37dfc3f000-7f37dfc43000 r--p 001c0000 fd:01 1987                       /lib/x86_64-linux-gnu/libc-2.23.so
+7f37dfc43000-7f37dfc45000 rw-p 001c4000 fd:01 1987                       /lib/x86_64-linux-gnu/libc-2.23.so
+7f37dfc45000-7f37dfc49000 rw-p 00000000 00:00 0 
+7f37dfc49000-7f37dfc4c000 r-xp 00000000 fd:01 1989                       /lib/x86_64-linux-gnu/libdl-2.23.so
+7f37dfc4c000-7f37dfe4b000 ---p 00003000 fd:01 1989                       /lib/x86_64-linux-gnu/libdl-2.23.so
+7f37dfe4b000-7f37dfe4c000 r--p 00002000 fd:01 1989                       /lib/x86_64-linux-gnu/libdl-2.23.so
+7f37dfe4c000-7f37dfe4d000 rw-p 00003000 fd:01 1989                       /lib/x86_64-linux-gnu/libdl-2.23.so
+7f37dfe4d000-7f37dfe62000 r-xp 00000000 fd:01 517589                     /home/fsilva/sonar-scanner/jre/lib/amd64/jli/libjli.so
+7f37dfe62000-7f37e0062000 ---p 00015000 fd:01 517589                     /home/fsilva/sonar-scanner/jre/lib/amd64/jli/libjli.so
+7f37e0062000-7f37e0063000 rw-p 00015000 fd:01 517589                     /home/fsilva/sonar-scanner/jre/lib/amd64/jli/libjli.so
+7f37e0063000-7f37e007b000 r-xp 00000000 fd:01 1986                       /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f37e007b000-7f37e027a000 ---p 00018000 fd:01 1986                       /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f37e027a000-7f37e027b000 r--p 00017000 fd:01 1986                       /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f37e027b000-7f37e027c000 rw-p 00018000 fd:01 1986                       /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f37e027c000-7f37e0280000 rw-p 00000000 00:00 0 
+7f37e0280000-7f37e02a6000 r-xp 00000000 fd:01 1985                       /lib/x86_64-linux-gnu/ld-2.23.so
+7f37e02ae000-7f37e02b0000 r--s 00048000 fd:01 517811                     /home/fsilva/.sonar/cache/90da8f56fbbbb3624b8a3f6f1075860a/sonar-ldap-plugin.jar
+7f37e02b0000-7f37e02b1000 r--s 00001000 fd:01 495                        /tmp/sonar-scanner-api-batch1570333167933515371.jar
+7f37e02b1000-7f37e02b3000 r--s 00009000 fd:01 517604                     /home/fsilva/sonar-scanner/jre/lib/ext/sunec.jar
+7f37e02b3000-7f37e02b6000 r--s 0001a000 fd:01 517775                     /home/fsilva/sonar-scanner/jre/lib/jce.jar
+7f37e02b6000-7f37e02c1000 r--s 00089000 fd:01 517789                     /home/fsilva/sonar-scanner/lib/sonar-scanner-cli-3.2.0.1227.jar
+7f37e02c1000-7f37e0329000 rw-p 00000000 00:00 0 
+7f37e0329000-7f37e0391000 ---p 00000000 00:00 0 
+7f37e0391000-7f37e0399000 rw-s 00000000 fd:01 517794                     /tmp/hsperfdata_fsilva/9154
+7f37e0399000-7f37e039c000 ---p 00000000 00:00 0 
+7f37e039c000-7f37e049f000 rw-p 00000000 00:00 0 
+7f37e049f000-7f37e04a3000 r--s 0009a000 fd:01 517541                     /home/fsilva/sonar-scanner/jre/lib/jsse.jar
+7f37e04a3000-7f37e04a4000 rw-p 00000000 00:00 0 
+7f37e04a4000-7f37e04a5000 ---p 00000000 00:00 0 
+7f37e04a5000-7f37e04a6000 r--p 00025000 fd:01 1985                       /lib/x86_64-linux-gnu/ld-2.23.so
+7f37e04a6000-7f37e04a7000 rw-p 00026000 fd:01 1985                       /lib/x86_64-linux-gnu/ld-2.23.so
+7f37e04a7000-7f37e04a8000 rw-p 00000000 00:00 0 
+7ffcec298000-7ffcec2b9000 rw-p 00000000 00:00 0                          [stack]
+7ffcec3c3000-7ffcec3c6000 r--p 00000000 00:00 0                          [vvar]
+7ffcec3c6000-7ffcec3c8000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Dscanner.home=/home/fsilva/sonar-scanner -Dproject.home=/home/fsilva/dvws 
+java_command: org.sonarsource.scanner.cli.Main -Dsonar.projectKey=dvws -Dsonar.sources=. -Dsonar.host.url=http://sonar.guardti.com.br -Dsonar.login=9010a86d52e6596f46a23d0d69e73c9fb063ab17
+java_class_path (initial): /home/fsilva/sonar-scanner/lib/sonar-scanner-cli-3.2.0.1227.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/home/fsilva/sonar-scanner/jre
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/sonar-scanner/bin:/home/fsilva/sonar-scanner/bin
+USERNAME=root
+SHELL=/bin/bash
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xac78c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xac78c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x920ac0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x920ac0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x920ac0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x920ac0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x922300], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x923700], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x923700], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x923700], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x923700], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.5 LTS"
+
+uname:Linux 4.4.0-131-generic #157-Ubuntu SMP Thu Jul 12 15:51:36 UTC 2018 x86_64
+libc:glibc 2.23 NPTL 2.23 
+rlimit: STACK 8192k, CORE 0k, NPROC 7930, NOFILE 1048576, AS infinity
+load average:0.74 0.23 0.07
+
+/proc/meminfo:
+MemTotal:        2048212 kB
+MemFree:           79396 kB
+MemAvailable:      18468 kB
+Buffers:             488 kB
+Cached:            45996 kB
+SwapCached:            0 kB
+Active:          1882236 kB
+Inactive:          16600 kB
+Active(anon):    1876136 kB
+Inactive(anon):    10244 kB
+Active(file):       6100 kB
+Inactive(file):     6356 kB
+Unevictable:        3652 kB
+Mlocked:            3652 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:              1212 kB
+Writeback:             0 kB
+AnonPages:       1856072 kB
+Mapped:            37332 kB
+Shmem:             31540 kB
+Slab:              31984 kB
+SReclaimable:      16572 kB
+SUnreclaim:        15412 kB
+KernelStack:        5696 kB
+PageTables:        12120 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1024104 kB
+Committed_AS:    2894220 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       42988 kB
+DirectMap2M:     2054144 kB
+DirectMap1G:           0 kB
+
+
+CPU:total 1 (1 cores per cpu, 1 threads per core) family 6 model 79 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, tsc, bmi1, bmi2, adx
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 79
+model name	: Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz
+stepping	: 1
+microcode	: 0x1
+cpu MHz		: 2199.998
+cache size	: 30720 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl eagerfpu pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx smap xsaveopt
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 4399.99
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 2048212k(79396k free), swap 0k(0k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.121-b13) for linux-amd64 JRE (1.8.0_121-b13), built on Dec 12 2016 16:36:53 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Tue Aug 21 16:34:06 2018
+elapsed time: 24 seconds (0d 0h 0m 24s)
+
